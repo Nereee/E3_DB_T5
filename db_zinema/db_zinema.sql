@@ -1,7 +1,7 @@
-drop database db_elorrietazinema;
+drop database if exists db_elorrietazinema;
 
 CREATE DATABASE IF NOT EXISTS db_elorrietazinema
-CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish2_ci;
 
 use db_elorrietazinema;
 
@@ -71,11 +71,12 @@ CREATE TABLE EROSKETAK (
 );
 
 CREATE TABLE Sarrera (
-    sarrera_id INT PRIMARY KEY,
-    Erosketak_id smallint,
+    sarrera_id INT ,
+    erosketak_id smallint,
     prezioa DECIMAL(10, 2),
     saioa_id smallint,
-    FOREIGN KEY (Erosketak_id) REFERENCES EROSKETAK(erosketak_id),
+    primary key (sarrera_id, erosketak_id),
+    FOREIGN KEY (erosketak_id) REFERENCES EROSKETAK(erosketak_id),
     FOREIGN KEY (saioa_id) REFERENCES SAIOA(saioa_id)
 );
 
@@ -147,67 +148,72 @@ INSERT INTO BEZEROA VALUES (9, '56789012I', 'Miguel', 'Hernández', 'Gizona', 'm
 
 INSERT INTO BEZEROA VALUES (10, '67890123J', 'Elena', 'Díaz', 'Emakumea', 'elena@gmail.com', '890123456', 'pasahitza10', '1996-04-03');
 
+INSERT INTO ARETOA VALUES (1, 1, "Areto1");
 
+INSERT INTO ARETOA VALUES (2, 1, "Areto2");
+
+INSERT INTO ARETOA VALUES (3, 1, "Areto3");
+
+INSERT INTO ARETOA VALUES (4, 1, "Areto4");
+
+INSERT INTO ARETOA VALUES (5, 1, "Areto5");
+
+INSERT INTO ARETOA VALUES (6, 2, "Areto1");
+
+INSERT INTO ARETOA VALUES (7, 2, "Areto2");
+
+INSERT INTO ARETOA VALUES (8, 2, "Areto3");
+
+INSERT INTO ARETOA VALUES (9, 2, "Areto4");
+
+INSERT INTO ARETOA VALUES (10, 2, "Areto5");
+
+INSERT INTO ARETOA VALUES (11, 3, "Areto1");
+
+INSERT INTO ARETOA VALUES (12, 3, "Areto2");
+
+INSERT INTO ARETOA VALUES (13, 3, "Areto3");
+
+INSERT INTO ARETOA VALUES (14, 3, "Areto4");
+
+INSERT INTO ARETOA VALUES (15, 3, "Areto5");
+
+INSERT INTO ARETOA VALUES (16, 4, "Areto1");
+
+INSERT INTO ARETOA VALUES (17, 4, "Areto2");
+
+INSERT INTO ARETOA VALUES (18, 4, "Areto3");
+
+INSERT INTO ARETOA VALUES (19, 4, "Areto4");
+
+INSERT INTO ARETOA VALUES (20, 4, "Areto5");
+
+INSERT INTO ARETOA VALUES (21, 5, "Areto1");
+
+INSERT INTO ARETOA VALUES (22, 5, "Areto2");
+
+INSERT INTO ARETOA VALUES (23, 5, "Areto3");
+
+INSERT INTO ARETOA VALUES (24, 5, "Areto4");
+
+INSERT INTO ARETOA VALUES (25, 5, "Areto5");
+
+/*
 #Kontsultak
 
-select s.eguna, s.ordutegia, f.izena, sum(sr.prezioa) as dirukopurua
+select s.eguna, s.ordutegia, f.izena, (f.prezioa * f.prezioa) as dirukopurua
 from saioa s join filma f
 using (filma_id)
-join sarrera sr using (saioa_id)
-group by s.saioa_id, f.izena
-order by SUM(sr.prezioa) desc
+order by dirukopurua
 limit 5;
 
-SELECT f.izena AS 'Filma', COUNT(sr.sarrera_id) AS 'Sarrera Kopurua'
-FROM FILMA f
-LEFT JOIN SAIOA s ON f.filma_id = s.filma_id
-LEFT JOIN sr ON s.saioa_id = sr.saioa_id
-GROUP BY f.izena
-ORDER BY COUNT(sr.sarrera_id) DESC
-LIMIT 5;
+select f.izena, s.prezioa 
+from filma f join saioa
+using (saioa_id)
+join sarrera
+using (saioa_id)
+limit 5;
 
-SELECT z.izena AS 'Cine', COUNT(DISTINCT b.Bezero_id) AS 'Bezero Kopurua'
-FROM ZINEMA z
-LEFT JOIN SAIOA s ON ZINEMA.zinema_id = SAIOA.zinema_id
-LEFT JOIN SARRERA sr ON s.saioa_id = s.saioa_id
-LEFT JOIN EROSKETAK e ON sr.Erosketak_id = e.erosketak_id
-LEFT JOIN BEZEROA b ON e.Bezero_id = b.Bezero_id
-GROUP BY z.izena
-ORDER BY COUNT(DISTINCT b.Bezero_id) ASC;
-
-
-SELECT z.izena AS 'Cine', a.izena AS 'Sala de Cine', AVG(f.Iraupena) AS 'Batez Besteko Iraupena'
-FROM ZINEMA z
-JOIN ARETOA a using (zinema_id)
-JOIN SAIOA s ON a.zinema_id = SAIOA.zinema_id AND a.aretoa_id = s.aretoa_id
-JOIN FILMA f using (filma_id)
-GROUP BY z.izena, a.izena
-ORDER BY AVG(f.Iraupena) DESC;
-
-SELECT f.generoa AS 'Genero', COUNT(sr.sarrera_id) AS 'Sarrera Kopurua'
-FROM FILMA f
-LEFT JOIN SAIOA s ON f.filma_id = s.filma_id
-LEFT JOIN SARRERA sr ON s.saioa_id = sr.saioa_id
-GROUP BY f.generoa
-ORDER BY COUNT(sr.sarrera_id) DESC;
-
-
-SELECT f.generoa AS 'Genero', f.izena AS 'Película', COUNT(sr.sarrera_id) AS 'Sarrera Kopurua'
-FROM FILMA f 
-LEFT JOIN SAIOA s using (filma_id)
-LEFT JOIN SARRERA sr using (saioa_id)
-GROUP BY f.generoa, f.izena
-ORDER BY COUNT(sr.sarrera_id) DESC;
-
-SELECT b.izena AS 'Bezeroa', COUNT(e.erosketak_id) AS 'Erosketa Kopurua', s.saioa_id, f.generoa AS 'Generoa'
-FROM BEZEROA b
-LEFT JOIN EROSKETAK e using (Bezero_id)
-LEFT JOIN SARRERA sr using (Erosketak_id)
-LEFT JOIN SAIOA s using (saioa_id)
-LEFT JOIN FILMA f using (filma_id)
-GROUP BY b.Bezero_id, s.saioa_id, f.generoa
-ORDER BY COUNT(e.erosketak_id) DESC, s.saioa_id ASC
-LIMIT 3;
-
-
-
+select e.kant, z.izena
+from erosketak join sarrea using (sarrera_id);
+*/
