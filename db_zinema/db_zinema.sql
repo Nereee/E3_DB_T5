@@ -73,7 +73,6 @@ CREATE TABLE EROSKETAK (
 CREATE TABLE Sarrera (
     sarrera_id INT ,
     erosketak_id smallint,
-    prezioa DECIMAL(10, 2),
     saioa_id smallint,
     primary key (sarrera_id, erosketak_id),
     FOREIGN KEY (erosketak_id) REFERENCES EROSKETAK(erosketak_id),
@@ -198,22 +197,46 @@ INSERT INTO ARETOA VALUES (24, 5, "Areto4");
 
 INSERT INTO ARETOA VALUES (25, 5, "Areto5");
 
-/*
-#Kontsultak
+INSERT INTO SARRERA (sarrera_id,erosketak_id, saioa_id)  VALUES (1, 1, 1);
 
-select s.eguna, s.ordutegia, f.izena, (f.prezioa * f.prezioa) as dirukopurua
-from saioa s join filma f
-using (filma_id)
-order by dirukopurua
-limit 5;
+INSERT INTO SARRERA (sarrera_id, erosketak_id, saioa_id) VALUES (2, 2, 7);
 
-select f.izena, s.prezioa 
-from filma f join saioa
-using (saioa_id)
-join sarrera
-using (saioa_id)
-limit 5;
+INSERT INTO SARRERA (sarrera_id, erosketak_id, saioa_id) VALUES (3, 3, 13);
 
-select e.kant, z.izena
-from erosketak join sarrea using (sarrera_id);
-*/
+INSERT INTO SARRERA (sarrera_id, erosketak_id, saioa_id)  VALUES (4, 4, 19);
+
+INSERT INTO SARRERA (sarrera_id, erosketak_id, saioa_id) VALUES (5, 5, 25);
+
+INSERT INTO SARRERA (sarrera_id, erosketak_id, saioa_id) VALUES (6, 6, 26);
+
+INSERT INTO SARRERA (sarrera_id, erosketak_id, saioa_id) VALUES (7, 7, 32);
+
+INSERT INTO SARRERA (sarrera_id, erosketak_id, saioa_id) VALUES (8, 8, 50);
+
+INSERT INTO SARRERA (sarrera_id, erosketak_id, saioa_id) VALUES (9, 9, 63);
+
+INSERT INTO SARRERA (sarrera_id, erosketak_id, saioa_id) VALUES (10, 10, 100);
+
+INSERT INTO erosketak (erosketak_id,dirutotala,kant,jatorria,bezero_id,deskontua)  VALUES (1, 38, 4,'online',1,30);
+
+INSERT INTO erosketak (erosketak_id,dirutotala,kant,jatorria,bezero_id,deskontua)  VALUES (2, 57, 6,'fisikoa',2,30);
+
+INSERT INTO erosketak (erosketak_id,dirutotala,kant,jatorria,bezero_id,deskontua)  VALUES (3, 76, 8,'fisikoa',3,30);
+
+INSERT INTO erosketak (erosketak_id,dirutotala,kant,jatorria,bezero_id,deskontua)  VALUES (4,28.5, 3,'online',4,30);
+
+INSERT INTO erosketak (erosketak_id,dirutotala,kant,jatorria,bezero_id,deskontua)  VALUES (5, 9.5, 1,'online',5,null);
+
+INSERT INTO erosketak (erosketak_id,dirutotala,kant,jatorria,bezero_id,deskontua)  VALUES (6, 19, 2,'fisikoa',6,20);
+
+INSERT INTO erosketak (erosketak_id,dirutotala,kant,jatorria,bezero_id,deskontua)  VALUES (7, 47.6, 5,'online',7,30);
+
+INSERT INTO erosketak (erosketak_id,dirutotala,kant,jatorria,bezero_id,deskontua)  VALUES (8, 19, 2,'fisikoa',8,20);
+
+INSERT INTO erosketak (erosketak_id,dirutotala,kant,jatorria,bezero_id,deskontua)  VALUES (9, 9.5, 1,'online',9,null);
+
+INSERT INTO erosketak (erosketak_id,dirutotala,kant,jatorria,bezero_id,deskontua)  VALUES (10, 66.5, 7,'fisikoa',10,30);
+
+
+select *
+from saioa;
