@@ -74,6 +74,7 @@ CREATE TABLE Sarrera (
     sarrera_id INT unsigned,
     erosketak_id smallint unsigned,
     saioa_id smallint unsigned,
+    kant_sr smallint not null,
     primary key (sarrera_id, erosketak_id),
     FOREIGN KEY (erosketak_id) REFERENCES EROSKETAK(erosketak_id) on delete cascade on update cascade,
     FOREIGN KEY (saioa_id) REFERENCES SAIOA(saioa_id) on delete cascade on update cascade
@@ -217,26 +218,24 @@ INSERT INTO erosketak VALUES (9, 9.5, 1,'online',9,null);
 
 INSERT INTO erosketak VALUES (10, 66.5, 7,'fisikoa',10,30);
 
-INSERT INTO SARRERA  VALUES (1, 1, 1);
+#HEMEN SAIOEN EXCELA IMPORTATU BEHAR DUGU 
 
-INSERT INTO SARRERA VALUES (2, 2, 7);
+INSERT INTO SARRERA  VALUES (1, 1, 1, 3);
 
-INSERT INTO SARRERA VALUES (3, 3, 13);
+INSERT INTO SARRERA VALUES (2, 2, 7, 8);
 
-INSERT INTO SARRERA VALUES (4, 4, 19);
+INSERT INTO SARRERA VALUES (3, 3, 13, 9);
 
-INSERT INTO SARRERA VALUES (5, 5, 25);
+INSERT INTO SARRERA VALUES (4, 4, 19, 1);
 
-INSERT INTO SARRERA VALUES (6, 6, 26);
+INSERT INTO SARRERA VALUES (5, 5, 25, 4);
 
-INSERT INTO SARRERA VALUES (7, 7, 32);
+INSERT INTO SARRERA VALUES (6, 6, 26, 2);
 
-INSERT INTO SARRERA  VALUES (8, 8, 50);
+INSERT INTO SARRERA VALUES (7, 7, 32, 3);
 
-INSERT INTO SARRERA VALUES (9, 9, 63);
+INSERT INTO SARRERA  VALUES (8, 8, 50, 4);
 
-INSERT INTO SARRERA VALUES (10, 10, 100);
+INSERT INTO SARRERA VALUES (9, 9, 63, 5);
 
-
-select *
-from saioa;
+INSERT INTO SARRERA VALUES (10, 10, 100, 2);

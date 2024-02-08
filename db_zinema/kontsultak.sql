@@ -53,9 +53,9 @@ ORDER BY sum(e.kant) DESC;
 #6-  Genero bakoitzeko zein izan da gehien ikusi den filma, genero bakoitzeko bakarrik film bat erakutsi behar da gainera film bakoitzeko zenbat sarrera erosi diren.
 SELECT distinct f.generoa AS 'Genero', f.izena AS 'Filma', sum(e.kant) AS 'Sarrera Kopurua'
 FROM FILMA f 
-LEFT JOIN SAIOA s using (filma_id)
-LEFT JOIN SARRERA sr using (saioa_id)
-LEFT JOIN erosketak e using (erosketak_id)
+JOIN SAIOA s using (filma_id)
+JOIN SARRERA sr using (saioa_id)
+JOIN erosketak e using (erosketak_id)
 GROUP BY f.generoa, f.izena
 ORDER BY sum(e.kant) DESC;
 
