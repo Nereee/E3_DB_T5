@@ -6,7 +6,7 @@ CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish2_ci;
 use db_elorrietazinema;
 
 CREATE TABLE ZINEMA (
-    zinema_id smallint PRIMARY KEY auto_increment,
+    zinema_id smallint unsigned PRIMARY KEY auto_increment,
     izena VARCHAR(30),
     email VARCHAR(50),
     telefonoa VARCHAR(9),
@@ -20,15 +20,15 @@ CREATE TABLE ZINEMA (
 );
 
 CREATE TABLE ARETOA (
-    aretoa_id smallint,
-    zinema_id smallint,
+    aretoa_id smallint unsigned,
+    zinema_id smallint unsigned,
     izena VARCHAR(30),
     primary key (zinema_id, aretoa_id),
-    FOREIGN KEY (zinema_id) REFERENCES ZINEMA(zinema_id)
+    FOREIGN KEY (zinema_id) REFERENCES ZINEMA(zinema_id) on delete cascade on update cascade
 );
 
 CREATE TABLE FILMA (
-    filma_id smallint PRIMARY KEY,
+    filma_id smallint unsigned PRIMARY KEY,
     generoa VARCHAR(30),
     prezioa DECIMAL(10, 2),
     izena VARCHAR(25),
@@ -38,45 +38,45 @@ CREATE TABLE FILMA (
 );
 
 CREATE TABLE SAIOA (
-    saioa_id smallint PRIMARY KEY,
+    saioa_id smallint unsigned PRIMARY KEY,
     eguna DATE,
     ordutegia TIME,
-    filma_id smallint,
-    aretoa_id smallint,
-    zinema_id smallint,
-    FOREIGN KEY (filma_id) REFERENCES FILMA(filma_id),
-    FOREIGN KEY (zinema_id, aretoa_id) REFERENCES ARETOA(zinema_id, aretoa_id)
+    filma_id smallint unsigned,
+    aretoa_id smallint unsigned,
+    zinema_id smallint unsigned,
+    FOREIGN KEY (filma_id) REFERENCES FILMA(filma_id) on delete cascade on update cascade,
+    FOREIGN KEY (zinema_id, aretoa_id) REFERENCES ARETOA(zinema_id, aretoa_id) on delete cascade on update cascade
 );
 
 CREATE TABLE BEZEROA (
-    Bezero_id smallint PRIMARY KEY,
-    NAN VARCHAR(20),
-    izena VARCHAR(30),
-    abizena VARCHAR(30),
+    Bezero_id smallint unsigned PRIMARY KEY,
+    NAN VARCHAR(9) unique not null,
+    izena VARCHAR(30) not null,
+    abizena VARCHAR(30) not null,
     Generoa VARCHAR(10),
-    Email VARCHAR(30),
+    Email VARCHAR(30) not null,
     telefonoa VARCHAR(11),
-    pasahitza VARCHAR(16),
-    jaio_data DATE
+    pasahitza VARCHAR(12) not null,
+    jaio_data DATE check (jaio_data < "2010-01-01")
 );
 
 CREATE TABLE EROSKETAK (
-    erosketak_id smallint PRIMARY KEY,
+    erosketak_id smallint unsigned  PRIMARY KEY,
     dirutotala DECIMAL(10, 2),
     kant smallint,
-    jatorria VARCHAR(255),
-    Bezero_id smallint,
+    jatorria enum('online','fisikoa'),
+    Bezero_id smallint unsigned,
     Deskontua decimal(10,2),
-    FOREIGN KEY (Bezero_id) REFERENCES BEZEROA(Bezero_id)
+    FOREIGN KEY (Bezero_id) REFERENCES BEZEROA(Bezero_id) on delete cascade on update cascade
 );
 
 CREATE TABLE Sarrera (
-    sarrera_id INT ,
-    erosketak_id smallint,
-    saioa_id smallint,
+    sarrera_id INT unsigned,
+    erosketak_id smallint unsigned,
+    saioa_id smallint unsigned,
     primary key (sarrera_id, erosketak_id),
-    FOREIGN KEY (erosketak_id) REFERENCES EROSKETAK(erosketak_id),
-    FOREIGN KEY (saioa_id) REFERENCES SAIOA(saioa_id)
+    FOREIGN KEY (erosketak_id) REFERENCES EROSKETAK(erosketak_id) on delete cascade on update cascade,
+    FOREIGN KEY (saioa_id) REFERENCES SAIOA(saioa_id) on delete cascade on update cascade
 );
 
 
@@ -197,45 +197,45 @@ INSERT INTO ARETOA VALUES (24, 5, "Areto4");
 
 INSERT INTO ARETOA VALUES (25, 5, "Areto5");
 
-INSERT INTO SARRERA (sarrera_id,erosketak_id, saioa_id)  VALUES (1, 1, 1);
+INSERT INTO erosketak VALUES (1, 38, 4,'online',1,30);
 
-INSERT INTO SARRERA (sarrera_id, erosketak_id, saioa_id) VALUES (2, 2, 7);
+INSERT INTO erosketak VALUES (2, 57, 6,'fisikoa',2,30);
 
-INSERT INTO SARRERA (sarrera_id, erosketak_id, saioa_id) VALUES (3, 3, 13);
+INSERT INTO erosketak  VALUES (3, 76, 8,'fisikoa',3,30);
 
-INSERT INTO SARRERA (sarrera_id, erosketak_id, saioa_id)  VALUES (4, 4, 19);
+INSERT INTO erosketak VALUES (4,28.5, 3,'online',4,30);
 
-INSERT INTO SARRERA (sarrera_id, erosketak_id, saioa_id) VALUES (5, 5, 25);
+INSERT INTO erosketak VALUES (5, 9.5, 1,'online',5,null);
 
-INSERT INTO SARRERA (sarrera_id, erosketak_id, saioa_id) VALUES (6, 6, 26);
+INSERT INTO erosketak  VALUES (6, 19, 2,'fisikoa',6,20);
 
-INSERT INTO SARRERA (sarrera_id, erosketak_id, saioa_id) VALUES (7, 7, 32);
+INSERT INTO erosketak VALUES (7, 47.6, 5,'online',7,30);
 
-INSERT INTO SARRERA (sarrera_id, erosketak_id, saioa_id) VALUES (8, 8, 50);
+INSERT INTO erosketak VALUES (8, 19, 2,'fisikoa',8,20);
 
-INSERT INTO SARRERA (sarrera_id, erosketak_id, saioa_id) VALUES (9, 9, 63);
+INSERT INTO erosketak VALUES (9, 9.5, 1,'online',9,null);
 
-INSERT INTO SARRERA (sarrera_id, erosketak_id, saioa_id) VALUES (10, 10, 100);
+INSERT INTO erosketak VALUES (10, 66.5, 7,'fisikoa',10,30);
 
-INSERT INTO erosketak (erosketak_id,dirutotala,kant,jatorria,bezero_id,deskontua)  VALUES (1, 38, 4,'online',1,30);
+INSERT INTO SARRERA  VALUES (1, 1, 1);
 
-INSERT INTO erosketak (erosketak_id,dirutotala,kant,jatorria,bezero_id,deskontua)  VALUES (2, 57, 6,'fisikoa',2,30);
+INSERT INTO SARRERA VALUES (2, 2, 7);
 
-INSERT INTO erosketak (erosketak_id,dirutotala,kant,jatorria,bezero_id,deskontua)  VALUES (3, 76, 8,'fisikoa',3,30);
+INSERT INTO SARRERA VALUES (3, 3, 13);
 
-INSERT INTO erosketak (erosketak_id,dirutotala,kant,jatorria,bezero_id,deskontua)  VALUES (4,28.5, 3,'online',4,30);
+INSERT INTO SARRERA VALUES (4, 4, 19);
 
-INSERT INTO erosketak (erosketak_id,dirutotala,kant,jatorria,bezero_id,deskontua)  VALUES (5, 9.5, 1,'online',5,null);
+INSERT INTO SARRERA VALUES (5, 5, 25);
 
-INSERT INTO erosketak (erosketak_id,dirutotala,kant,jatorria,bezero_id,deskontua)  VALUES (6, 19, 2,'fisikoa',6,20);
+INSERT INTO SARRERA VALUES (6, 6, 26);
 
-INSERT INTO erosketak (erosketak_id,dirutotala,kant,jatorria,bezero_id,deskontua)  VALUES (7, 47.6, 5,'online',7,30);
+INSERT INTO SARRERA VALUES (7, 7, 32);
 
-INSERT INTO erosketak (erosketak_id,dirutotala,kant,jatorria,bezero_id,deskontua)  VALUES (8, 19, 2,'fisikoa',8,20);
+INSERT INTO SARRERA  VALUES (8, 8, 50);
 
-INSERT INTO erosketak (erosketak_id,dirutotala,kant,jatorria,bezero_id,deskontua)  VALUES (9, 9.5, 1,'online',9,null);
+INSERT INTO SARRERA VALUES (9, 9, 63);
 
-INSERT INTO erosketak (erosketak_id,dirutotala,kant,jatorria,bezero_id,deskontua)  VALUES (10, 66.5, 7,'fisikoa',10,30);
+INSERT INTO SARRERA VALUES (10, 10, 100);
 
 
 select *
