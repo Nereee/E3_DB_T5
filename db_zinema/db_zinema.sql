@@ -63,10 +63,9 @@ CREATE TABLE BEZEROA (
 CREATE TABLE EROSKETAK (
     erosketak_id smallint unsigned  PRIMARY KEY,
     dirutotala DECIMAL(10, 2),
-    kant smallint,
     jatorria enum('online','fisikoa'),
     Bezero_id smallint unsigned,
-    Deskontua decimal(10,2),
+    Deskontua decimal(4,2),
     FOREIGN KEY (Bezero_id) REFERENCES BEZEROA(Bezero_id) on delete cascade on update cascade
 );
 
@@ -198,27 +197,27 @@ INSERT INTO ARETOA VALUES (24, 5, "Areto4");
 
 INSERT INTO ARETOA VALUES (25, 5, "Areto5");
 
-INSERT INTO erosketak VALUES (1, 38, 4,'online',1,30);
-
-INSERT INTO erosketak VALUES (2, 57, 6,'fisikoa',2,30);
-
-INSERT INTO erosketak  VALUES (3, 76, 8,'fisikoa',3,30);
-
-INSERT INTO erosketak VALUES (4,28.5, 3,'online',4,30);
-
-INSERT INTO erosketak VALUES (5, 9.5, 1,'online',5,null);
-
-INSERT INTO erosketak  VALUES (6, 19, 2,'fisikoa',6,20);
-
-INSERT INTO erosketak VALUES (7, 47.6, 5,'online',7,30);
-
-INSERT INTO erosketak VALUES (8, 19, 2,'fisikoa',8,20);
-
-INSERT INTO erosketak VALUES (9, 9.5, 1,'online',9,null);
-
-INSERT INTO erosketak VALUES (10, 66.5, 7,'fisikoa',10,30);
-
 #HEMEN SAIOEN EXCELA IMPORTATU BEHAR DUGU 
+
+INSERT INTO erosketak VALUES (1, 38,'online',1,30);
+
+INSERT INTO erosketak VALUES (2, 57,'fisikoa',2,30);
+
+INSERT INTO erosketak  VALUES (3, 76,'fisikoa',3,30);
+
+INSERT INTO erosketak VALUES (4,28.5,'online',4,30);
+
+INSERT INTO erosketak VALUES (5, 9.5,'online',5,null);
+
+INSERT INTO erosketak  VALUES (6, 19,'fisikoa',6,20);
+
+INSERT INTO erosketak VALUES (7, 47.6,'online',7,30);
+
+INSERT INTO erosketak VALUES (8, 19,'fisikoa',8,20);
+
+INSERT INTO erosketak VALUES (9, 9.5,'online',9,null);
+
+INSERT INTO erosketak VALUES (10, 66.5,'fisikoa',10,30);
 
 INSERT INTO SARRERA  VALUES (1, 1, 1, 3);
 
