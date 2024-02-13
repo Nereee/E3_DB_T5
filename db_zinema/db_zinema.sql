@@ -60,13 +60,24 @@ CREATE TABLE BEZEROA (
     jaio_data DATE check (jaio_data < "2010-01-01")
 );
 
+CREATE TABLE LANGILEA (
+Langile_id smallint unsigned  PRIMARY KEY,
+NAN varchar(9) not null unique,
+izena varchar(20) not null,
+abizena varchar(20) not null,
+postua enum('saltzailea','aretozaina'),
+Erabiltzailea varchar(15) not null unique,
+Pasahitza varchar(12) not null unique
+);
+
 CREATE TABLE EROSKETAK (
     erosketak_id smallint unsigned  PRIMARY KEY,
     dirutotala DECIMAL(10, 2),
     jatorria enum('online','fisikoa'),
-    Bezero_id smallint unsigned,
+    Bezero_id smallint unsigned not null,
     Deskontua decimal(4,2),
-    FOREIGN KEY (Bezero_id) REFERENCES BEZEROA(Bezero_id) on delete cascade on update cascade
+    FOREIGN KEY (Bezero_id) REFERENCES BEZEROA(Bezero_id) on delete cascade on update cascade,
+    FOREIGN KEY (Bezero_id) REFERENCES Langilea(langile_id) on delete cascade on update cascade
 );
 
 CREATE TABLE Sarrera (
@@ -147,6 +158,16 @@ INSERT INTO BEZEROA VALUES (9, '56789012I', 'Miguel', 'Hernández', 'Gizona', 'm
 
 INSERT INTO BEZEROA VALUES (10, '67890123J', 'Elena', 'Díaz', 'Emakumea', 'elena@gmail.com', '890123456', 'pasahitza10', '1996-04-03');
 
+INSERT INTO LANGILEA VALUES (11, '123456789', 'Juan', 'Lopez', 'saltzailea', 'juan123', 'pasahitza123');
+
+INSERT INTO LANGILEA VALUES (12, '987654321', 'Maria', 'Garcia', 'aretozaina', 'maria456', 'pasahitza456');
+
+INSERT INTO LANGILEA VALUES (13, '456789012', 'Pedro', 'Martinez', 'saltzailea', 'pedro789', 'pasahitza789');
+
+INSERT INTO LANGILEA VALUES (14, '789012345', 'Ana', 'Rodriguez', 'aretozaina', 'ana123', ' pasahitza23');
+
+INSERT INTO LANGILEA VALUES (15, '234567890', 'Carlos', 'Lopez', 'saltzailea', 'carlos456', 'pasahitza46');
+
 INSERT INTO ARETOA VALUES (1, 1, "Areto1");
 
 INSERT INTO ARETOA VALUES (2, 1, "Areto2");
@@ -201,23 +222,23 @@ INSERT INTO ARETOA VALUES (25, 5, "Areto5");
 
 INSERT INTO erosketak VALUES (1, 38,'online',1,30);
 
-INSERT INTO erosketak VALUES (2, 57,'fisikoa',2,30);
+INSERT INTO erosketak VALUES (12, 57,'fisikoa',2,30);
 
-INSERT INTO erosketak  VALUES (3, 76,'fisikoa',3,30);
+INSERT INTO erosketak  VALUES (13, 76,'fisikoa',3,30);
 
 INSERT INTO erosketak VALUES (4,28.5,'online',4,30);
 
 INSERT INTO erosketak VALUES (5, 9.5,'online',5,null);
 
-INSERT INTO erosketak  VALUES (6, 19,'fisikoa',6,20);
+INSERT INTO erosketak  VALUES (6, 19,'online',6,20);
 
 INSERT INTO erosketak VALUES (7, 47.6,'online',7,30);
 
-INSERT INTO erosketak VALUES (8, 19,'fisikoa',8,20);
+INSERT INTO erosketak VALUES (8, 19,'online',8,20);
 
 INSERT INTO erosketak VALUES (9, 9.5,'online',9,null);
 
-INSERT INTO erosketak VALUES (10, 66.5,'fisikoa',10,30);
+INSERT INTO erosketak VALUES (11, 66.5,'fisikoa',10,30);
 
 INSERT INTO SARRERA  VALUES (1, 1, 1, 3);
 
