@@ -56,6 +56,7 @@ CREATE TABLE BEZEROA (
     Generoa VARCHAR(10),
     Email VARCHAR(30) not null,
     telefonoa VARCHAR(11),
+    erabiltzailea varchar(15) not null unique,
     pasahitza VARCHAR(12) not null,
     jaio_data DATE check (jaio_data < "2010-01-01")
 );
@@ -127,25 +128,25 @@ insert into FILMA values (15, "Komedia", "9.5", "La vida de Brian", 94, "Terry J
 
 insert into FILMA values (16, "komedia", "9.5", "Aterriza como puedas", 88, "Jim Abrahams", 1980);
 
-INSERT INTO BEZEROA  VALUES (1, '12345678A', 'Juan', 'Pérez', 'Gizona', 'juan@gmail.com', '123456789', 'pasahitza1', '1990-05-15');
+INSERT INTO BEZEROA  VALUES (1, '12345678A', 'Juan', 'Pérez', 'Gizona', 'juan@gmail.com', '123456789', 'JuanPe','pasahitza1', '1990-05-15');
 
-INSERT INTO BEZEROA VALUES (2, '87654321B', 'Ana', 'López', 'Emakumea', 'ana@gmail.com', '987654321', 'pasahitza2', '1988-08-25');
+INSERT INTO BEZEROA VALUES (2, '87654321B', 'Ana', 'López', 'Emakumea', 'ana@gmail.com', '987654321', 'AnaLo','pasahitza2', '1988-08-25');
 
-INSERT INTO BEZEROA VALUES (3, '23456789C', 'Pedro', 'García', 'Gizona', 'pedro@gmail.com', '654321987', 'pasahitza3', '1995-03-10');
+INSERT INTO BEZEROA VALUES (3, '23456789C', 'Pedro', 'García', 'Gizona', 'pedro@gmail.com', '654321987','PedroGa', 'pasahitza3', '1995-03-10');
 
-INSERT INTO BEZEROA  VALUES (4, '98765432D', 'María', 'Martínez', 'Emakumea', 'maria@gmail.com', '321987654', 'pasahitza4', '1992-12-20');
+INSERT INTO BEZEROA  VALUES (4, '98765432D', 'María', 'Martínez', 'Emakumea', 'maria@gmail.com', '321987654', 'MariaMar','pasahitza4', '1992-12-20');
 
-INSERT INTO BEZEROA VALUES (5, '34567890E', 'Javier', 'Fernández', 'Gizona', 'javier@gmail.com', '987123456', 'pasahitza5', '1987-06-30');
+INSERT INTO BEZEROA VALUES (5, '34567890E', 'Javier', 'Fernández', 'Gizona', 'javier@gmail.com', '987123456', 'JavierFer','pasahitza5', '1987-06-30');
 
-INSERT INTO BEZEROA VALUES (6, '09876543F', 'Laura', 'Gómez', 'Emakumea', 'laura@gmail.com', '456789012', 'pasahitza6', '1993-09-05');
+INSERT INTO BEZEROA VALUES (6, '09876543F', 'Laura', 'Gómez', 'Emakumea', 'laura@gmail.com', '456789012', 'LauraGo','pasahitza6', '1993-09-05');
 
-INSERT INTO BEZEROA VALUES (7, '45678901G', 'Carlos', 'Rodríguez', 'Gizona', 'carlos@gmail.com', '654987321', 'pasahitza7', '1991-02-17');
+INSERT INTO BEZEROA VALUES (7, '45678901G', 'Carlos', 'Rodríguez', 'Gizona', 'carlos@gmail.com', '654987321','CarlosRo','pasahitza7', '1991-02-17');
 
-INSERT INTO BEZEROA VALUES (8, '76543210H', 'Sara', 'López', 'Emakumea', 'sara@gmail.com', '789456123', 'pasahitza8', '1994-11-12');
+INSERT INTO BEZEROA VALUES (8, '76543210H', 'Sara', 'López', 'Emakumea', 'sara@gmail.com', '789456123', 'SaraLo','pasahitza8', '1994-11-12');
 
-INSERT INTO BEZEROA VALUES (9, '56789012I', 'Miguel', 'Hernández', 'Gizona', 'miguel@gmail.com', '234567890', 'pasahitza9', '1989-07-22');
+INSERT INTO BEZEROA VALUES (9, '56789012I', 'Miguel', 'Hernández', 'Gizona', 'miguel@gmail.com', '234567890','MiguelHer','pasahitza9', '1989-07-22');
 
-INSERT INTO BEZEROA VALUES (10, '67890123J', 'Elena', 'Díaz', 'Emakumea', 'elena@gmail.com', '890123456', 'pasahitza10', '1996-04-03');
+INSERT INTO BEZEROA VALUES (10, '67890123J', 'Elena', 'Díaz', 'Emakumea', 'elena@gmail.com', '890123456','ElenaDi' ,'pasahitza10', '1996-04-03');
 
 INSERT INTO ARETOA VALUES (1, 1, "Areto1");
 
