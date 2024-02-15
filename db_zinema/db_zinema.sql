@@ -1,4 +1,4 @@
-drop database if exists db_elorrietazinema;
+drop database if exists db_elorrietazinemaT5;
 
 CREATE DATABASE IF NOT EXISTS db_elorrietazinemaT5
 CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish2_ci;
