@@ -1,9 +1,9 @@
 drop database if exists db_elorrietazinema;
 
-CREATE DATABASE IF NOT EXISTS db_elorrietazinema
+CREATE DATABASE IF NOT EXISTS db_elorrietazinemaT5
 CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish2_ci;
 
-use db_elorrietazinema;
+use db_elorrietazinemaT5;
 
 CREATE TABLE ZINEMA (
     zinema_id smallint unsigned PRIMARY KEY auto_increment,
