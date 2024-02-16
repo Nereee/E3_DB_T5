@@ -20,7 +20,7 @@ CREATE TABLE ZINEMA (
 );
 
 CREATE TABLE ARETOA (
-    aretoa_id smallint unsigned,
+    aretoa_id varchar(3),
     zinema_id varchar(2),
     izena VARCHAR(30),
     primary key (zinema_id, aretoa_id),
@@ -42,7 +42,7 @@ CREATE TABLE SAIOA (
     eguna DATE,
     ordutegia TIME,
     filma_id smallint unsigned,
-    aretoa_id smallint unsigned,
+    aretoa_id varchar(3),
     zinema_id varchar(2),
     FOREIGN KEY (filma_id) REFERENCES FILMA(filma_id) on delete cascade on update cascade,
     FOREIGN KEY (zinema_id, aretoa_id) REFERENCES ARETOA(zinema_id, aretoa_id) on delete cascade on update cascade
@@ -148,55 +148,55 @@ INSERT INTO BEZEROA VALUES (9, '56789012I', 'Miguel', 'Hernández', 'Gizona', 'm
 
 INSERT INTO BEZEROA VALUES (10, '67890123J', 'Elena', 'Díaz', 'Emakumea', 'elena@gmail.com', '890123456','ElenaDi' ,'pasahitza10', '1996-04-03');
 
-INSERT INTO ARETOA VALUES (1, "Z1", "Areto1");
+INSERT INTO ARETOA VALUES ("A1", "Z1", "Areto1");
 
-INSERT INTO ARETOA VALUES (2, "Z1", "Areto2");
+INSERT INTO ARETOA VALUES ("A2", "Z1", "Areto2");
 
-INSERT INTO ARETOA VALUES (3, "Z1", "Areto3");
+INSERT INTO ARETOA VALUES ("A3", "Z1", "Areto3");
 
-INSERT INTO ARETOA VALUES (4, "Z1", "Areto4");
+INSERT INTO ARETOA VALUES ("A4", "Z1", "Areto4");
 
-INSERT INTO ARETOA VALUES (5, "Z1", "Areto5");
+INSERT INTO ARETOA VALUES ("A5", "Z1", "Areto5");
 
-INSERT INTO ARETOA VALUES (1, "Z2", "Areto1");
+INSERT INTO ARETOA VALUES ("A1", "Z2", "Areto1");
 
-INSERT INTO ARETOA VALUES (2, "Z2", "Areto2");
+INSERT INTO ARETOA VALUES ("A2", "Z2", "Areto2");
 
-INSERT INTO ARETOA VALUES (3, "Z2", "Areto3");
+INSERT INTO ARETOA VALUES ("A3", "Z2", "Areto3");
 
-INSERT INTO ARETOA VALUES (4, "Z2", "Areto4");
+INSERT INTO ARETOA VALUES ("A4", "Z2", "Areto4");
 
-INSERT INTO ARETOA VALUES (5, "Z2", "Areto5");
+INSERT INTO ARETOA VALUES ("A5", "Z2", "Areto5");
 
-INSERT INTO ARETOA VALUES (1, "Z3", "Areto1");
+INSERT INTO ARETOA VALUES ("A1", "Z3", "Areto1");
 
-INSERT INTO ARETOA VALUES (2, "Z3", "Areto2");
+INSERT INTO ARETOA VALUES ("A2", "Z3", "Areto2");
 
-INSERT INTO ARETOA VALUES (3, "Z3", "Areto3");
+INSERT INTO ARETOA VALUES ("A3", "Z3", "Areto3");
 
-INSERT INTO ARETOA VALUES (4, "Z3", "Areto4");
+INSERT INTO ARETOA VALUES ("A4", "Z3", "Areto4");
 
-INSERT INTO ARETOA VALUES (5, "Z3", "Areto5");
+INSERT INTO ARETOA VALUES ("A5", "Z3", "Areto5");
 
-INSERT INTO ARETOA VALUES (1, "Z4", "Areto1");
+INSERT INTO ARETOA VALUES ("A1", "Z4", "Areto1");
 
-INSERT INTO ARETOA VALUES (2, "Z4", "Areto2");
+INSERT INTO ARETOA VALUES ("A2", "Z4", "Areto2");
 
-INSERT INTO ARETOA VALUES (3, "Z4", "Areto3");
+INSERT INTO ARETOA VALUES ("A3", "Z4", "Areto3");
 
-INSERT INTO ARETOA VALUES (4, "Z4", "Areto4");
+INSERT INTO ARETOA VALUES ("A4", "Z4", "Areto4");
 
-INSERT INTO ARETOA VALUES (5, "Z4", "Areto5");
+INSERT INTO ARETOA VALUES ("A5", "Z4", "Areto5");
 
-INSERT INTO ARETOA VALUES (1, "Z5", "Areto1");
+INSERT INTO ARETOA VALUES ("A1", "Z5", "Areto1");
 
-INSERT INTO ARETOA VALUES (2, "Z5", "Areto2");
+INSERT INTO ARETOA VALUES ("A2", "Z5", "Areto2");
 
-INSERT INTO ARETOA VALUES (3, "Z5", "Areto3");
+INSERT INTO ARETOA VALUES ("A3", "Z5", "Areto3");
 
-INSERT INTO ARETOA VALUES (4, "Z5", "Areto4");
+INSERT INTO ARETOA VALUES ("A4", "Z5", "Areto4");
 
-INSERT INTO ARETOA VALUES (5, "Z5", "Areto5");
+INSERT INTO ARETOA VALUES ("A5", "Z5", "Areto5");
 
 #HEMEN SAIOEN EXCELA IMPORTATU BEHAR DUGU 
 
