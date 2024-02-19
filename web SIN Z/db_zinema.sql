@@ -1,12 +1,12 @@
-drop database if exists db_elorrietazinemaT5;
+drop database if exists db_elorrietazinemat5;
 
-CREATE DATABASE IF NOT EXISTS db_elorrietazinemaT5
+CREATE DATABASE IF NOT EXISTS db_elorrietazinemat5
 CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish2_ci;
 
-use db_elorrietazinemaT5;
+use db_elorrietazinemat5;
 
 CREATE TABLE ZINEMA (
-    zinema_id varchar(2) PRIMARY KEY,
+    zinema_id smallint unsigned PRIMARY KEY auto_increment,
     izena VARCHAR(30),
     email VARCHAR(50),
     telefonoa VARCHAR(9),
@@ -20,8 +20,8 @@ CREATE TABLE ZINEMA (
 );
 
 CREATE TABLE ARETOA (
-    aretoa_id varchar(3),
-    zinema_id varchar(2),
+    aretoa_id smallint unsigned,
+    zinema_id smallint unsigned,
     izena VARCHAR(30),
     primary key (zinema_id, aretoa_id),
     FOREIGN KEY (zinema_id) REFERENCES ZINEMA(zinema_id) on delete cascade on update cascade
@@ -42,8 +42,8 @@ CREATE TABLE SAIOA (
     eguna DATE,
     ordutegia TIME,
     filma_id smallint unsigned,
-    aretoa_id varchar(3),
-    zinema_id varchar(2),
+    aretoa_id smallint unsigned,
+    zinema_id smallint unsigned,
     FOREIGN KEY (filma_id) REFERENCES FILMA(filma_id) on delete cascade on update cascade,
     FOREIGN KEY (zinema_id, aretoa_id) REFERENCES ARETOA(zinema_id, aretoa_id) on delete cascade on update cascade
 );
@@ -58,7 +58,7 @@ CREATE TABLE BEZEROA (
     telefonoa VARCHAR(11),
     erabiltzailea varchar(15) not null unique,
     pasahitza VARCHAR(12) not null,
-    jaio_data DATE check (jaio_data < '2010-01-01')
+    jaio_data DATE check (jaio_data < "2010-01-01")
 );
 
 CREATE TABLE EROSKETAK (
@@ -71,7 +71,7 @@ CREATE TABLE EROSKETAK (
 );
 
 CREATE TABLE Sarrera (
-    sarrera_id smallint unsigned,
+    sarrera_id INT unsigned,
     erosketak_id smallint unsigned,
     saioa_id smallint unsigned,
     kant_sr smallint not null,
@@ -81,20 +81,20 @@ CREATE TABLE Sarrera (
 );
 
 
-insert into ZINEMA values 
-("Z1","Elorrieta-errekamari zinema","zinemaelorrieta@gmail.com", "123456789", "Bilbao", "Lehendakari Agirre", 4,"ElorrietaYt","ElorrietaTw","ElorrietaInsta","ElorrietaFace");
+insert into ZINEMA (izena, email, telefonoa, herria, kalea, zenbakia, youtube, twitter, instagram, facebook ) values 
+("Elorrieta-errekamari zinema","zinema@gmail.com", "123456789", "Bilbao", "Lehendakari Agirre", 4,"ElorrietaYt","ElorrietaTw","ElorrietaInsta","ElorrietaFace");
 
-insert into ZINEMA values 
-("Z2","Basauri zinema","zinemabasauri@gmail.com", "123456789", "Basauri", "Pozokoetxe", 6 ,"BasaurizinemaYt","BasaurizinemaTw","BasaurizinemaInsta","BasaurizinemaFace");
+insert into ZINEMA (izena, email, telefonoa, herria, kalea, zenbakia, youtube, twitter, instagram, facebook ) values 
+("Basauri zinema","zinema@gmail.com", "123456789", "Basauri", "Pozokoetxe", 6 ,"BasaurizinemaYt","BasaurizinemaTw","BasaurizinemaInsta","BasaurizinemaFace");
 
-insert into ZINEMA  values 
-("Z3","Ideal zinema","zinemaideal@gmail.com", "123456789", "Bilbao", "Juan Ajuriaguerra", 7,"IdealYt","IdealTw","IdealInsta","IdealFace");
+insert into ZINEMA (izena, email, telefonoa, herria, kalea, zenbakia, youtube, twitter, instagram, facebook ) values 
+("Ideal zinema","zinema@gmail.com", "123456789", "Bilbao", "Juan Ajuriaguerra", 7,"IdealYt","IdealTw","IdealInsta","IdealFace");
 
-insert into ZINEMA  values 
-("Z4","Portugalete zinema","zinemaportu@gmail.com", "123456789", "Portugalete", "Buenavista", 2,"PortuzinemaYt","PortuzinemaTw","PortuzinemaInsta","PortuzinemaFace");
+insert into ZINEMA (izena, email, telefonoa, herria, kalea, zenbakia, youtube, twitter, instagram, facebook ) values 
+("Portugalete zinema","zinema@gmail.com", "123456789", "Portugalete", "Buenavista", 2,"PortuzinemaYt","PortuzinemaTw","PortuzinemaInsta","PortuzinemaFace");
 
-insert into ZINEMA  values 
-("Z5","Gazteiz zinema","zinemagazteiz@gmail.com", "123456789", "Gazteiz", "La Musica Ibilbidea", 10,"GazteizZinemaYt","GazteizZinemaTw","GazteizZinemaInsta","GazteizZinemaFace");
+insert into ZINEMA (izena, email, telefonoa, herria, kalea, zenbakia, youtube, twitter, instagram, facebook ) values 
+("Gazteiz zinema","zinema@gmail.com", "123456789", "Gazteiz", "La Musica Ibilbidea", 10,"GazteizZinemaYt","GazteizZinemaTw","GazteizZinemaInsta","GazteizZinemaFace");
 
 insert into FILMA values (1, "Drama", "9.5", "Handia", 116, "Jon Garaño", 2017);
 
@@ -148,55 +148,55 @@ INSERT INTO BEZEROA VALUES (9, '56789012I', 'Miguel', 'Hernández', 'Gizona', 'm
 
 INSERT INTO BEZEROA VALUES (10, '67890123J', 'Elena', 'Díaz', 'Emakumea', 'elena@gmail.com', '890123456','ElenaDi' ,'pasahitza10', '1996-04-03');
 
-INSERT INTO ARETOA VALUES ("A1", "Z1", "Areto1");
+INSERT INTO ARETOA VALUES (1, 1, "Areto1");
 
-INSERT INTO ARETOA VALUES ("A2", "Z1", "Areto2");
+INSERT INTO ARETOA VALUES (2, 1, "Areto2");
 
-INSERT INTO ARETOA VALUES ("A3", "Z1", "Areto3");
+INSERT INTO ARETOA VALUES (3, 1, "Areto3");
 
-INSERT INTO ARETOA VALUES ("A4", "Z1", "Areto4");
+INSERT INTO ARETOA VALUES (4, 1, "Areto4");
 
-INSERT INTO ARETOA VALUES ("A5", "Z1", "Areto5");
+INSERT INTO ARETOA VALUES (5, 1, "Areto5");
 
-INSERT INTO ARETOA VALUES ("A1", "Z2", "Areto1");
+INSERT INTO ARETOA VALUES (1, 2, "Areto1");
 
-INSERT INTO ARETOA VALUES ("A2", "Z2", "Areto2");
+INSERT INTO ARETOA VALUES (2, 2, "Areto2");
 
-INSERT INTO ARETOA VALUES ("A3", "Z2", "Areto3");
+INSERT INTO ARETOA VALUES (3, 2, "Areto3");
 
-INSERT INTO ARETOA VALUES ("A4", "Z2", "Areto4");
+INSERT INTO ARETOA VALUES (4, 2, "Areto4");
 
-INSERT INTO ARETOA VALUES ("A5", "Z2", "Areto5");
+INSERT INTO ARETOA VALUES (5, 2, "Areto5");
 
-INSERT INTO ARETOA VALUES ("A1", "Z3", "Areto1");
+INSERT INTO ARETOA VALUES (1, 3, "Areto1");
 
-INSERT INTO ARETOA VALUES ("A2", "Z3", "Areto2");
+INSERT INTO ARETOA VALUES (2, 3, "Areto2");
 
-INSERT INTO ARETOA VALUES ("A3", "Z3", "Areto3");
+INSERT INTO ARETOA VALUES (3, 3, "Areto3");
 
-INSERT INTO ARETOA VALUES ("A4", "Z3", "Areto4");
+INSERT INTO ARETOA VALUES (4, 3, "Areto4");
 
-INSERT INTO ARETOA VALUES ("A5", "Z3", "Areto5");
+INSERT INTO ARETOA VALUES (5, 3, "Areto5");
 
-INSERT INTO ARETOA VALUES ("A1", "Z4", "Areto1");
+INSERT INTO ARETOA VALUES (1, 4, "Areto1");
 
-INSERT INTO ARETOA VALUES ("A2", "Z4", "Areto2");
+INSERT INTO ARETOA VALUES (2, 4, "Areto2");
 
-INSERT INTO ARETOA VALUES ("A3", "Z4", "Areto3");
+INSERT INTO ARETOA VALUES (3, 4, "Areto3");
 
-INSERT INTO ARETOA VALUES ("A4", "Z4", "Areto4");
+INSERT INTO ARETOA VALUES (4, 4, "Areto4");
 
-INSERT INTO ARETOA VALUES ("A5", "Z4", "Areto5");
+INSERT INTO ARETOA VALUES (5, 4, "Areto5");
 
-INSERT INTO ARETOA VALUES ("A1", "Z5", "Areto1");
+INSERT INTO ARETOA VALUES (1, 5, "Areto1");
 
-INSERT INTO ARETOA VALUES ("A2", "Z5", "Areto2");
+INSERT INTO ARETOA VALUES (2, 5, "Areto2");
 
-INSERT INTO ARETOA VALUES ("A3", "Z5", "Areto3");
+INSERT INTO ARETOA VALUES (3, 5, "Areto3");
 
-INSERT INTO ARETOA VALUES ("A4", "Z5", "Areto4");
+INSERT INTO ARETOA VALUES (4, 5, "Areto4");
 
-INSERT INTO ARETOA VALUES ("A5", "Z5", "Areto5");
+INSERT INTO ARETOA VALUES (5, 5, "Areto5");
 
 #HEMEN SAIOEN EXCELA IMPORTATU BEHAR DUGU 
 
