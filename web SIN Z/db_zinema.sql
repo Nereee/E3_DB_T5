@@ -128,7 +128,7 @@ insert into FILMA values (15, "Komedia", "9.5", "La vida de Brian", 94, "Terry J
 
 insert into FILMA values (16, "komedia", "9.5", "Aterriza como puedas", 88, "Jim Abrahams", 1980);
 
-INSERT INTO BEZEROA  VALUES (1, '12345678A', 'Juan', 'Pérez', 'Gizona', 'juan@gmail.com', '123456789', 'JuanPe','pasahitza1', '1990-05-15');
+INSERT INTO BEZEROA  VALUES (1, '12345678A', 'Juan', 'Pérez', 'Gizona', 'juan@gmail.com', '123456789', 'JuanPe','in', '1990-05-15');
 
 INSERT INTO BEZEROA VALUES (2, '87654321B', 'Ana', 'López', 'Emakumea', 'ana@gmail.com', '987654321', 'AnaLo','pasahitza2', '1988-08-25');
 
