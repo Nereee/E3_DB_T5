@@ -128,7 +128,7 @@ insert into FILMA values (15, "Komedia", "9.5", "La vida de Brian", 94, "Terry J
 
 insert into FILMA values (16, "komedia", "9.5", "Aterriza como puedas", 88, "Jim Abrahams", 1980);
 
-INSERT INTO BEZEROA  VALUES (1, '12345678A', 'Juan', 'Pérez', 'Gizona', 'juan@gmail.com', '123456789', 'JuanPe','in', '1990-05-15');
+INSERT INTO BEZEROA  VALUES (1, '12345678A', 'Juan', 'Pérez', 'Gizona', 'juan@gmail.com', '123456789', 'JuanPe','Pasahitza1', '1990-05-15');
 
 INSERT INTO BEZEROA VALUES (2, '87654321B', 'Ana', 'López', 'Emakumea', 'ana@gmail.com', '987654321', 'AnaLo','pasahitza2', '1988-08-25');
 
@@ -220,22 +220,27 @@ INSERT INTO erosketak (dirutotala, jatorria,Bezero_id,Deskontua) VALUES (9.5,'on
 
 INSERT INTO erosketak (dirutotala, jatorria,Bezero_id,Deskontua) VALUES (66.5,'fisikoa',6,30);
 
-INSERT INTO SARRERA (erosketa_id, saioa_id, kant_sr) VALUES (1, 1, 3);
+INSERT INTO SARRERA (erosketak_id, saioa_id, kant_sr) VALUES (1, 1, 3);
 
-INSERT INTO SARRERA (erosketa_id, saioa_id, kant_sr) VALUES (2, 7, 8);
+INSERT INTO SARRERA (erosketak_id, saioa_id, kant_sr) VALUES (2, 7, 8);
 
-INSERT INTO SARRERA (erosketa_id, saioa_id, kant_sr) VALUES (3, 13, 9);
+INSERT INTO SARRERA (erosketak_id, saioa_id, kant_sr) VALUES (3, 13, 9);
 
-INSERT INTO SARRERA (erosketa_id, saioa_id, kant_sr) VALUES (4, 19, 1);
+INSERT INTO SARRERA (erosketak_id, saioa_id, kant_sr) VALUES (4, 19, 1);
 
-INSERT INTO SARRERA (erosketa_id, saioa_id, kant_sr) VALUES (5, 25, 4);
+INSERT INTO SARRERA (erosketak_id, saioa_id, kant_sr) VALUES (5, 25, 4);
 
-INSERT INTO SARRERA (erosketa_id, saioa_id, kant_sr) VALUES (6, 26, 2);
+INSERT INTO SARRERA (erosketak_id, saioa_id, kant_sr) VALUES (6, 26, 2);
 
-INSERT INTO SARRERA (erosketa_id, saioa_id, kant_sr) VALUES (7, 32, 3);
+INSERT INTO SARRERA (erosketak_id, saioa_id, kant_sr) VALUES (7, 32, 3);
 
-INSERT INTO SARRERA (erosketa_id, saioa_id, kant_sr)  VALUES (8, 50, 4);
+INSERT INTO SARRERA (erosketak_id, saioa_id, kant_sr)  VALUES (8, 50, 4);
 
-INSERT INTO SARRERA (erosketa_id, saioa_id, kant_sr) VALUES (9, 63, 5);
+INSERT INTO SARRERA (erosketak_id, saioa_id, kant_sr) VALUES (9, 63, 5);
 
-INSERT INTO SARRERA (erosketa_id, saioa_id, kant_sr) VALUES (10, 100, 2);
+INSERT INTO SARRERA (erosketak_id, saioa_id, kant_sr) VALUES (10, 100, 2);
+
+
+SELECT * FROM erosketak
+;
+
